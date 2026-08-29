@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /Admin/
+Disallow: /Login
+Disallow: /api/
+
+Sitemap: https://npi.edu.bd/sitemap.xml

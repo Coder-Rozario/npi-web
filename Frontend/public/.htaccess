@@ -1,0 +1,54 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # ================================
+  # Legacy PHP site redirects
+  # ================================
+
+  # Old CodeIgniter-style routes: /index.php, /index.php/blog,
+  # /index.php/page_details/2, /index.php/page_details/8, etc.
+  RewriteCond %{REQUEST_URI} ^/index\.php(/.*)?$ [NC]
+  RewriteRule ^ /? [R=301,L]
+
+  # Old technology_details/{id} routes -> homepage
+  RewriteCond %{REQUEST_URI} ^/technology_details/ [NC]
+  RewriteRule ^ /? [R=301,L]
+
+  # Old page_details/{id} routes without index.php prefix (just in case)
+  RewriteCond %{REQUEST_URI} ^/page_details/ [NC]
+  RewriteRule ^ /? [R=301,L]
+
+  # Any other stray .php file requests
+  RewriteCond %{REQUEST_URI} \.php$ [NC]
+  RewriteRule ^ /? [R=301,L]
+
+  # ================================
+  # SPA fallback (React Router)
+  # ================================
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  RewriteRule ^api/ - [L]
+  RewriteRule . /index.html [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), usb=(), bluetooth=(), payment=()"
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://npi.edu.bd; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://npi.edu.bd https://res.cloudinary.com https://via.placeholder.com; media-src 'self' blob: https://npi.edu.bd; connect-src 'self' https://npi.edu.bd; frame-src 'self' https://www.google.com https://maps.google.com https://maps.gstatic.com https://maps.googleapis.com; child-src 'self' https://www.google.com https://maps.google.com; frame-ancestors 'none';"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>

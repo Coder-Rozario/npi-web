@@ -1,0 +1,21 @@
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), usb=(), bluetooth=(), payment=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://npi.edu.bd; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://npi.edu.bd https://res.cloudinary.com https://via.placeholder.com; media-src 'self' blob: https://npi.edu.bd; connect-src 'self' https://npi.edu.bd; frame-ancestors 'none';
+
+/index.html
+  Cache-Control: no-cache
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.(png|jpg|jpeg|gif|webp|svg|ico)
+  Cache-Control: public, max-age=31536000, immutable

@@ -1,0 +1,21 @@
+{
+  "name": "National Polytechnic Institute (NPI) Dhaka",
+  "short_name": "NPI Dhaka",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0186C0",
+  "theme_color": "#0186C0",
+  "description": "Official website for National Polytechnic Institute Dhaka.",
+  "icons": [
+    {
+      "src": "/Images/Logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/Images/Logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
